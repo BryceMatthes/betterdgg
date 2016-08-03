@@ -1,6 +1,7 @@
 (function(bdgg) {
     var TWITCH_URL  = /http:\/\/(?:www\.)?twitch.tv\/(\w+)\/?$/;
     var HITBOX_URL  = /http:\/\/(?:www\.)?hitbox.tv\/(\w+)\/?$/;
+    var CASTAMP_URL = /http:\/\/(?:www\.)?castamp.com\/live\/(\w+)$/;
     var USTREAM_CHANNEL_URL = /http:\/\/(?:www\.)?ustream.tv\/(?:channel\/)?([\w-]+)\/?$/;
     var USTREAM_EMBED_URL = /http:\/\/(?:www\.)?ustream.tv\/(?:embed|channel\/id)\/(\d+)\/?$/;
 
@@ -110,6 +111,9 @@
         }
         else if (match = HITBOX_URL.exec(href)) {
             href = _link('hitbox', match[1]);
+        }
+        else if (match = CASTAMP_URL.exec(href)) {
+            href = _link('castamp', match[1]);
         }
         else if (match = USTREAM_EMBED_URL.exec(href)) {
             href = _link('ustream', match[1]);
