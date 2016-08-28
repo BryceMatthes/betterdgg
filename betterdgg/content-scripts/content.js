@@ -89,7 +89,7 @@ window.addEventListener("message", function(e) {
                 }
             },
             method: 'GET',
-            url: 'http://downthecrop.xyz/bbdgg/api/shitmemesfamhhhhhhheehehe'
+            url: 'http://downthecrop.xyz/bbdgg/api/phrases.json'
         };
         doXHR(xhr); 
     }
