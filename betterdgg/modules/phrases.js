@@ -24,11 +24,7 @@
                     }
 
                     if (e.data.type === 'bdgg_phrase_reply') {
-                        var Phrasetemp = e.data.response.phrases;
-                       
-                        for (var x = 0; x < Phrasetemp.length; x++) {
-                            PHRASES = PHRASES.concat(Phrasetemp[x]);
-                        }
+                        PHRASES = e.data.response.phrases;
                     }
                     else if (e.data.type === 'bdgg_phrase_error') {
                         destiny.chat.gui.push(new ChatErrorMessage("BBDGG could not load the prohibited phrases list"));
