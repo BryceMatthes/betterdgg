@@ -50,6 +50,7 @@
                         for (var i = 0; i < messages.lines.length; i++) {
                             DoPush(messages.lines[i].text, messages.nick, moment.unix(messages.lines[i].timestamp));
                         }
+                        destiny.chat.gui.push(new ChatInfoMessage("dgg.overrustlelogs.net/"+messages.nick));
 
                     } else if (e.data.type === 'bdgg_stalk_error') {
                         PushError(e.data.error);

@@ -78,6 +78,25 @@ window.addEventListener("message", function(e) {
         };
         doXHR(xhr);
 
+    } else if (e.data.type === 'bdgg_mentions_request') {
+
+        userName = e.data.data["userName"];
+        var mentionsUrl = "https://downthecrop.xyz/bbdgg/api/mentions/?name="+userName;
+
+        xhr = {
+            onload: function(responseText) {
+                var messages = JSON.parse(responseText);
+                if (messages.error){
+                    window.postMessage({ type: 'bdgg_mentions_error', error: "Mentions error: " + messages.error }, '*');
+                } else {
+                    window.postMessage({ type: 'bdgg_mentions_reply', response: messages }, '*');
+                }
+            },
+            method: 'GET',
+            url: mentionsUrl
+        };
+        doXHR(xhr);
+
     } else if (e.data.type === 'bdgg_phrase_request') {
         xhr = {
             onload: function(responseText) {
