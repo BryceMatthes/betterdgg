@@ -38,6 +38,7 @@
                 };
 
                 var gui = window.destiny.chat.gui;
+                var messageCount = 3;
 
                 gui.lines.on('mousedown', 'div.user-msg a.user', function() {
                     if (bdgg.settings.get('bdgg_highlight_selected_mentions')) {
@@ -55,13 +56,19 @@
 
                     if (e.data.type === 'bdgg_mentions_reply') {
                         var messages = e.data.response;
-                        console.error(e.data.response);
-                        for (var k = messages.length-1; k > messages.length-4; k--) {
-                            var mentionStamp = String(messages[k].date);
-                            mentionStamp = mentionStamp.substring(0, mentionStamp.length - 3);
-                            DoPush(messages[k].text, messages[k].nick, moment.unix(mentionStamp));
+                        var mentionStamp;
+                        if (messages.length){
+                            if (messages.length-messageCount < 0)
+                                messageCount = messages.length;
+                            for (var i = messages.length-messageCount; i < messages.length; i++) {
+                                mentionStamp = String(messages[i].date);
+                                mentionStamp = mentionStamp.substring(0, mentionStamp.length - 3);
+                                DoPush(messages[i].text, messages[i].nick, moment.unix(mentionStamp));
+                            }
+                            PushChat("polecat.me/mentions");
                         }
-                        destiny.chat.gui.push(new ChatInfoMessage("polecat.me/mentions"));
+                        else
+                            PushChat("No mentions DaFeels polecat.me/mentions");
                     } else if (e.data.type === 'bdgg_mentions_error') {
                         PushError(e.data.error);
                     }
@@ -73,21 +80,25 @@
 
                 destiny.chat.handleCommand = function(str) {
                     var match;
+                    var mentionsArguments = {};
                     var sendstr = str.trim();
-                    if (match = sendstr.match(/^m(?:entions)?(?:\s+(\w+))(?:\s+(\d+))?\s*$/))
-                    {
-                        var stalkArguments = {};
+                    if (match = sendstr.match(/^m(?:entions)?(?:\s+(\w+))(?:\s+(\d+))?\s*$/)) {
+
+                        mentionsArguments = {};
+                        mentionsArguments["userName"] = match[1];
 
                         //if no number is specified, default to 3, otherwise take the number but cap it at 50
-                        stalkArguments["userName"] = match[1];
+                        messageCount = Math.min(Number(match[2]) || 3, 50);
 
-                        //the content script will listen to this message and will be able to make the request to the log servers
+                        //the content script will listen to this message and will be able to make the request to the mentions servers
                         //otherwise this is not easily possbile due to cross origin policy
-                        window.postMessage({type: 'bdgg_mentions_request', data: stalkArguments}, '*');
+                        window.postMessage({type: 'bdgg_mentions_request', data: mentionsArguments}, '*');
 
-
-                    } else if (sendstr.match(/^(m|entions)(\s.*?)?$/)) {
-                        PushChat("Mentions Format: /mentions username");
+                    } else if (sendstr.match(/^(mentions)/)) {
+                        mentionsArguments = {};
+                        messageCount = 3;
+                        mentionsArguments["userName"] = destiny.chat.user.username;
+                        window.postMessage({type: 'bdgg_mentions_request', data: mentionsArguments}, '*');
                     } else {
                         fnHandleCommand.apply(this, arguments);
                     }
