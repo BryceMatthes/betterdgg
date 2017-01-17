@@ -81,7 +81,8 @@ window.addEventListener("message", function(e) {
     } else if (e.data.type === 'bdgg_mentions_request') {
 
         userName = e.data.data["userName"];
-        var mentionsUrl = "https://downthecrop.xyz/bbdgg/api/mentions/?name="+userName;
+        var mentionsSize = e.data.data["size"];
+        var mentionsUrl = "https://downthecrop.xyz/bbdgg/api/mentions/?name="+userName+"&size="+mentionsSize;
 
         xhr = {
             onload: function(responseText) {

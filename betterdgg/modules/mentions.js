@@ -85,11 +85,21 @@
                     if (match = sendstr.match(/^m(?:entions)?(?:\s+(\w+))(?:\s+(\d+))?\s*$/)) {
 
                         mentionsArguments = {};
-                        mentionsArguments["userName"] = match[1];
 
-                        //if no number is specified, default to 3, otherwise take the number but cap it at 50
-                        messageCount = Math.min(Number(match[2]) || 3, 50);
+                        //if the user types '/mentions #' it will instead use the first argument as a count on their username.
+                        if (Number(match[1])){
+                            mentionsArguments = {};
+                            mentionsArguments["userName"] = destiny.chat.user.username;
+                            messageCount = Math.min(Number(match[1]) || 3, 50);
+                            mentionsArguments["size"] = messageCount;   
+                        } else {
+                            mentionsArguments["userName"] = match[1];
 
+                            //if no number is specified, default to 3, otherwise take the number but cap it at 50
+                            messageCount = Math.min(Number(match[2]) || 3, 50);
+                            mentionsArguments["size"] = messageCount;
+                        }
+                        
                         //the content script will listen to this message and will be able to make the request to the mentions servers
                         //otherwise this is not easily possbile due to cross origin policy
                         window.postMessage({type: 'bdgg_mentions_request', data: mentionsArguments}, '*');
@@ -98,6 +108,7 @@
                         mentionsArguments = {};
                         messageCount = 3;
                         mentionsArguments["userName"] = destiny.chat.user.username;
+                        mentionsArguments["size"] = messageCount;
                         window.postMessage({type: 'bdgg_mentions_request', data: mentionsArguments}, '*');
                     } else {
                         fnHandleCommand.apply(this, arguments);
