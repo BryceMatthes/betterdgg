@@ -91,6 +91,13 @@
             'type':'string'
         },
 
+        'bdgg_name_color': {
+            'name': 'Tagged users and colors',
+            'description': 'Sweetie_Belle\'s color tagging',
+            'value':'{}',
+            'type':'string'
+        },
+
         'bdgg_user_ignore': {
             'name': 'Ignore user messages',
             'description': 'List of users to ignore without removing their mentions',
