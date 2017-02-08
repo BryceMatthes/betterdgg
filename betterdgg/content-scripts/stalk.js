@@ -3,6 +3,8 @@ var port = null;
 if (typeof chrome !== "undefined" && chrome.runtime) {
     port = chrome.runtime.connect();
     port.onMessage.addListener(pushMessage);
+} else if (navigator.userAgent.indexOf('Safari') !== -1) {
+    // someone who knows this project more intimately can figure this out  
 } else if (typeof self !== "undefined" && self.postMessage) {
     self.on("message", pushMessage);
 }

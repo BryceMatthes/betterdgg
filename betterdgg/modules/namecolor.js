@@ -42,10 +42,10 @@
             tagUpdate: function() {
                 var nameColorKeys = [];
                 var jNameColor = getNameColor();
-                let res = '';
+                var res = '';
                 for(var k in jNameColor) nameColorKeys.push(k);
                 document.querySelector('#bdgg_name_color').value = JSON.stringify(jNameColor);
-                for (let i = 0; i < nameColorKeys.length; i++) {
+                for (var i = 0; i < nameColorKeys.length; i++) {
                     res += this.userTemplate.replace('{}', nameColorKeys[i]) + this.colorTemplate.replace('{}', jNameColor[nameColorKeys[i]]);
                 }
                 if (this.style.styleSheet)
