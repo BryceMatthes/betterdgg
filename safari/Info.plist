@@ -44,6 +44,8 @@
 			<array>
 				<string>*.destiny.gg</string>
 			</array>
+			<key>Include Secure Pages</key>
+			<true/>
 			<key>Level</key>
 			<string>Some</string>
 		</dict>

@@ -188,8 +188,7 @@ gulp.task('safari', [ 'safari:css', 'safari:plist', 'js' ], function() {
     var js = gulp.src([ './build/betterdgg.js', './safari/inject.js', './build/content.js' ])
         .pipe(concat('betterdgg.js'))
         .pipe(gulp.dest('./dist/betterdgg.safariextension/'));
-    merge(assets, js).on('end', function() {
-        console.log('Open ./dist/betterdgg.safariextension in Safari Extension Builder'
-            + ' to dist Safari extension');
-    });
+    merge(assets, js);
+    console.log('Open ./dist/betterdgg.safariextension in Safari Extension Builder'
+                + ' to dist Safari extension');
 });
