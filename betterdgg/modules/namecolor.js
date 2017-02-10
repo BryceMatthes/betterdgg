@@ -40,6 +40,10 @@
                 CSS.tagUpdate();
             },
             tagUpdate: function() {
+                if (!bdgg.settings.get('bdgg_name_color')){
+                    //Prevent users from breaking the json completely
+                    bdgg.settings.put('bdgg_name_color', '{}');
+                }
                 var nameColorKeys = [];
                 var jNameColor = getNameColor();
                 let res = '';

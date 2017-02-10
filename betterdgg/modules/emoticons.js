@@ -5,8 +5,8 @@
         
         var BBDGG_EMOTICONS = ["DESBRO", "ChanChamp", "SuccesS", "TopCake", "DSPstiny", "SephURR", 
             "POTATO", "Riperino", "NiceMeMe", "dayJoy", "kaceyFace",
-            "AlisherZ", "WEOW", "Depresstiny", "HerbPerve", "CARBUCKS", "Jewstiny",
-            "ITSRAWWW", "CallHafu", "ChibiDesti", "CORAL", "CUX", "NOBULLY"
+            "AlisherZ", "WEOW", "Depresstiny", "CARBUCKS", "Jewstiny",
+            "ITSRAWWW", "CallHafu", "ChibiDesti", "CORAL", "CUX", "NOBULLY", "PepoThink"
         ];
         
         var TWITCH_EMOTICONS = ["DansGame", "Kreygasm", "PJSalt", "PogChamp",
@@ -15,7 +15,7 @@
             "MingLee", "OhMyDog", "CoolCat", "NotLikeThis"
         ];
         
-        var BTTV_EMOTICONS = ["GabeN", "gachiGASM", "ShibeZ", "D:", "FeelsBadMan", "FeelsGoodMan", "haHAA", "FeelsAmazingMan"];
+        var BTTV_EMOTICONS = ["GabeN", "gachiGASM", "D:", "FeelsBadMan", "FeelsGoodMan", "haHAA", "FeelsAmazingMan"];
 
         var ANIMATED = [ "CuckCrab", "SourPls", "RaveDoge" ];
 

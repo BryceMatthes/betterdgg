@@ -169,13 +169,6 @@
     background: url('images/emoticons/Depresstiny.png');
 }
 
-.chat-emote-HerbPerve, .chat-emote.bdgg-chat-emote-HerbPerve {
-    width: 28px;
-    height: 28px;
-    margin-top: -28px;
-    background: url('images/emoticons/HerbPerve.png');
-}
-
 .chat-emote-Jewstiny, .chat-emote.bdgg-chat-emote-Jewstiny {
     width: 27px;
     height: 32px;
@@ -303,11 +296,11 @@
     background: url('images/emoticons/SephURR.png');
 }
 
-.chat-emote-ShibeZ, .chat-emote.bdgg-chat-emote-ShibeZ {
-    width: 28px;
-    height: 28px;
-    margin-top: -28px;
-    background: url('images/emoticons/ShibeZ.png');
+.chat-emote-PepoThink, .chat-emote.bdgg-chat-emote-PepoThink {
+    width: 30px;
+    height: 30px;
+    margin-top: -30px;
+    background: url('images/emoticons/PepoThink.png');
 }
 
 .chat-emote-SourPls, .chat-emote.bdgg-chat-emote-SourPls {
@@ -480,19 +473,6 @@
 
 .chat-input-wrap {
     margin-right: 90px !important;
-}
-
-.bdgg-glyphicon-aslan {
-    background-image:url('images/glyphicon_aslan_grey.png');
-    display: inline-block;
-    height: 20px;
-    width: 24px;
-    vertical-align: baseline;
-}
-
-.bdgg-glyphicon-aslan:hover,
-.active .bdgg-glyphicon-aslan {
-    background-image:url('images/glyphicon_aslan.png');
 }
 
 .icon-bdgg-contributor {
