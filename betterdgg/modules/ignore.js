@@ -3,6 +3,38 @@
         var style, cssBody, template;
         cssBody = '{display:none;}';
         template = '.user-msg[data-username="{}"]';
+
+        var fnHandleCommand = destiny.chat.handleCommand;
+
+        destiny.chat.handleCommand = function(str) {
+            var match, sendstr, iuUpdate;
+            sendstr = str.trim();
+            var iuList = bdgg.settings.get('bdgg_user_ignore').split(',');
+            if (iuList.length === 1 && iuList[0] === '') iuList = [];
+            if (match = sendstr.match(/^(iu|ignoreuser)\s(\w+)/)) {
+                iuList.push(match[2]);
+                iuUpdate = iuList.join(',');
+                bdgg.settings.put('bdgg_user_ignore', iuUpdate);
+                destiny.chat.gui.push(new ChatInfoMessage('BBDGG ignore list updated: ' +iuList));        
+            }
+            else if (match = sendstr.match(/^(uniu|unignoreuser)\s(\w+)/)) {
+                iuList.pop(match[2]);
+                iuUpdate = iuList.join(',');
+                bdgg.settings.put('bdgg_user_ignore', iuUpdate);
+                destiny.chat.gui.push(new ChatInfoMessage('BBDGG ignore list updated: ' +iuList));        
+            }
+            else if (match = sendstr.match(/^(iu|ignoreuser)/)){
+
+                if (iuList.length < 1)
+                    destiny.chat.gui.push(new ChatInfoMessage('BBDGG ignore list empty.')); 
+                else
+                    destiny.chat.gui.push(new ChatInfoMessage('BBDGG ignored users: '+ iuList));
+
+            } else {
+                fnHandleCommand.apply(this, arguments);
+            }
+        };
+
         return {
             init: function() {
                 bdgg.ignore.chatLines();
@@ -12,6 +44,7 @@
                 bdgg.settings.addObserver(function(key, val) {
                     if (key === 'bdgg_user_ignore') {
                         bdgg.ignore.update(val);
+                        document.querySelector('#bdgg_user_ignore').value = val;
                     }
                 });
                 bdgg.ignore.update(bdgg.settings.get('bdgg_user_ignore'));

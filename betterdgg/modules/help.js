@@ -7,8 +7,9 @@
                 destiny.chat.handleCommand = function(str) {
                     fnHandleCommand.apply(this, arguments);
                     if (/^help ?/.test(str)) {
-                        this.gui.push(new ChatInfoMessage("Better Destiny.gg: "
-                            + "/stalk /strims /ps /passivestalk (Without arguments to list stalked users)"));
+                        this.gui.push(new ChatInfoMessage("Better Better Destiny.gg: "
+                            + "/stalk /mentions /strims /ps /unps /iu /uniu /iw /uniw /ps /unps /tag /untag. "+
+                            "Additional information on commands can be found here: https://github.com/BryceMatthes/betterdgg/wiki"));
                     }
                 };
             }

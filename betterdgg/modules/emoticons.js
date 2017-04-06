@@ -6,7 +6,7 @@
         var BBDGG_EMOTICONS = ["DESBRO", "ChanChamp", "SuccesS", "TopCake", "DSPstiny", "SephURR", 
             "POTATO", "Riperino", "NiceMeMe", "dayJoy", "kaceyFace",
             "AlisherZ", "WEOW", "Depresstiny", "CARBUCKS", "Jewstiny",
-            "ITSRAWWW", "CallHafu", "ChibiDesti", "CORAL", "CUX", "NOBULLY", "PepoThink"
+            "ITSRAWWW", "CallHafu", "ChibiDesti", "CORAL", "CUX", "NOBULLY"
         ];
         
         var TWITCH_EMOTICONS = ["DansGame", "Kreygasm", "PJSalt", "PogChamp",
