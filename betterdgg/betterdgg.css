@@ -52,6 +52,13 @@
     margin-top: -30px;
 }
 
+.chat-emote-Wowee, .chat-emote.bdgg-chat-emote-Wowee {
+    background-image:url('images/emoticons/Wowee.png');
+    width: 30px;
+    height: 30px;
+    margin-top: -30px;
+}
+
 .chat-emote-FeelsBadMan, .chat-emote.bdgg-chat-emote-FeelsBadMan {
     background-image:url('images/emoticons/FeelsBadMan.png');
     width: 30px;

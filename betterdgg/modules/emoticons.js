@@ -15,7 +15,7 @@
             "MingLee", "OhMyDog", "CoolCat", "NotLikeThis"
         ];
         
-        var BTTV_EMOTICONS = ["GabeN", "gachiGASM", "D:", "FeelsBadMan", "FeelsGoodMan", "haHAA", "FeelsAmazingMan"];
+        var BTTV_EMOTICONS = ["GabeN", "gachiGASM", "D:", "FeelsBadMan", "FeelsGoodMan", "haHAA", "FeelsAmazingMan", "Wowee"];
 
         var ANIMATED = [ "CuckCrab", "SourPls", "RaveDoge" ];
 
