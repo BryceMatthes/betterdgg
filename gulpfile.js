@@ -17,7 +17,7 @@ var eslint  = require('gulp-eslint');
 
 var package = require('./package.json');
 
-gulp.task('default', [ 'chrome:zip', 'firefox:xpi', 'safari' ], function() {
+gulp.task('default', [ 'chrome:zip','safari' ], function() {
 });
 
 gulp.task('clean', function() {
@@ -54,12 +54,6 @@ gulp.task('chrome:css', function() {
         .pipe(gulp.dest('./build/chrome/'));
 });
 
-gulp.task('firefox:css', function() {
-    return gulp.src('./betterdgg/*.css')
-        .pipe(encode64)
-        .pipe(concat('betterdgg.css'))
-        .pipe(gulp.dest('./build/firefox/data/'));
-});
 
 gulp.task('safari:css', function() {
     return gulp.src('./betterdgg/*.css')
@@ -144,30 +138,6 @@ gulp.task('chrome:zip', [ 'chrome' ], function() {
     gulp.src('./build/chrome/**/*')
         .pipe(zip('betterdgg-chrome.zip'))
         .pipe(gulp.dest('./dist/'));
-});
-
-gulp.task('firefox:manifest', function() {
-    return gulp.src('./firefox/package.json')
-        .pipe(map(function(code) {
-            var obj = JSON.parse(code.toString());
-            obj.version = package.version;
-            return JSON.stringify(obj);
-        }))
-        .pipe(gulp.dest('./build/firefox/'));
-});
-
-gulp.task('firefox', [ 'firefox:css', 'firefox:manifest', 'js' ], function() {
-    var assets = gulp.src([ './firefox/**/*', '!./firefox/data/inject.js',
-            '!./firefox/package.json' ])
-        .pipe(gulp.dest('./build/firefox/'));
-    var js = gulp.src([ './build/betterdgg.js', './firefox/data/inject.js', './build/content.js' ])
-        .pipe(concat('betterdgg.js'))
-        .pipe(gulp.dest('./build/firefox/data/'));
-    return merge(assets, js);
-});
-
-gulp.task('firefox:xpi', [ 'firefox' ], function() {
-    run('mkdir -p ./dist && cd ./build/firefox && jpm xpi').exec();
 });
 
 gulp.task('safari:plist', function() {
